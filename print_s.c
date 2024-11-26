@@ -8,14 +8,14 @@
 
 void print_s(va_list args)
 {
-	constant char *str;
+	constant char *s;
 
-	va_start(args, str);
+	va_start(args, s);
 
-	while (str)
+	while (s)
 	{
-		putchar(str);
-		str = va_arg(args, constant char *);
+		putchar(s);
+		s = va_arg(args, constant char *);
 	}
 	va_end(args);
 }
