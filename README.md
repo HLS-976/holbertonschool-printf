@@ -23,6 +23,7 @@ Please don't forget to include the files needed so the compiling process can be 
 
 If you wish to try our function you can, for example, use this example:
 
+```sh
 #include <limits.h>
 #include <stdio.h>
 #include "main.h"
@@ -36,4 +37,4 @@ int main(void)
     len2 = printf("Let's try to printf a simple sentence.\n");
     return(0);
 }
-
+```
