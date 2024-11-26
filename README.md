@@ -47,15 +47,19 @@ And would return "38" since that is the number of characters in this character s
 ## Man Page
 
 - Name
+
 printf - format and print data
 
 - Synopsis
+
 printf format (argument)
 
 - Description
+
 Print argument(s) according to format
 
 - Return Value
+
 It returns the length of the given specifier
 
 
