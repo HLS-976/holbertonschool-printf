@@ -7,6 +7,7 @@ The role of the 'printf' function is to do formated printing, and the goal of th
 ## Compilation
 
 The command needed to compile the files is:
+
 'gcc -Wall -Werror -Wextra -pedantic -std=gnu89 -Wno-format *.c'
 
 Please don't forget to include the files needed so the compiling process can be as simple as possible.
@@ -18,5 +19,21 @@ Please don't forget to include the files needed so the compiling process can be 
 - The amount of functions per file does not exceed 5
 - Our code uses the 'Betty' style
 
-## Examples
+## Example
+
+If you wish to try our function you can, for example, use this example:
+
+#include <limits.h>
+#include <stdio.h>
+#include "main.h"
+
+int main(void)
+{
+    int len;
+    int len2;
+
+    len = _printf("Let's try to printf a simple sentence.\n");
+    len2 = printf("Let's try to printf a simple sentence.\n");
+    return(0);
+}
 
