@@ -8,8 +8,8 @@
 
 void print_c(va_list args)
 {
-	char temporyVariable;
+	char temporaryVariable;
 
-	temporyVariable = (char)va_arg(args, int);
-	_putchar(temporyVariable);
+	temporaryVariable = (char)va_arg(args, int);
+	_putchar(temporaryVariable);
 }
