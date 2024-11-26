@@ -85,6 +85,7 @@ int get_specifier(const char *format, int *indexFormat, int *lengthFormat,
 	 */
 	Specifier_t arraySpecifiers[] = {
 		{'c', print_character},
+		{'s', print_string},
 		{'d', print_integer},
 		{'i', print_integer},
 		{'\0', NULL}
