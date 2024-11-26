@@ -8,7 +8,9 @@ The role of the 'printf' function is to do formated printing, and the goal of th
 
 The command needed to compile the files is:
 
-'gcc -Wall -Werror -Wextra -pedantic -std=gnu89 -Wno-format *.c'
+```sh
+gcc -Wall -Werror -Wextra -pedantic -std=gnu89 -Wno-format *.c
+```
 
 Please don't forget to include the files needed so the compiling process can be as simple as possible.
 
@@ -38,3 +40,5 @@ int main(void)
     return(0);
 }
 ```
+
+
