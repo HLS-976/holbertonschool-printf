@@ -13,10 +13,10 @@ Please don't forget to include the files needed so the compiling process can be 
 
 ## Requirements
 
--All of our files are made to be compiled on Ubuntu 20.04 LTS
--Compiling has to be done through gcc
--The amount of functions per file does not exceed 5
--Our code uses the 'Betty' style
+- All of our files are made to be compiled on Ubuntu 20.04 LTS
+- Compiling has to be done through gcc
+- The amount of functions per file does not exceed 5
+- Our code uses the 'Betty' style
 
 ## Examples
 
