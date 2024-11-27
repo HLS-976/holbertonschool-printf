@@ -17,6 +17,9 @@ int _printf(const char *format, ...)
 	int indexOfFormat, sizeOfFormat;
 	va_list variadicArguments;
 
+	if (!format)
+		return (-1);
+
 	va_start(variadicArguments, format);
 	indexOfFormat = 0;
 	sizeOfFormat = 0;
@@ -42,7 +45,7 @@ int _printf(const char *format, ...)
 /**
  * check_specifier - prints the resultat of specifier and return the size
  * @format: string
- * indexOfFormat: index of current format
+ * @indexOfFormat: index of current format
  * @sizeOfFormat: size of current format
  * @variadicArguments: variadics arguments
  * Return: void
@@ -57,8 +60,10 @@ void get_specifier(
 	int foundSpecifier, indexOfArraySpecifier;
 
 	Specifier_t arraySpecifiers[] = {
-		{'c', print_c},
-		{'d', print_d},
+		{'c', print_character},
+		{'s', print_string},
+		{'d', print_integer},
+		{'i', print_integer},
 		{'\0', NULL}
 	};
 
@@ -74,11 +79,14 @@ void get_specifier(
 		{
 			(*sizeOfFormat) +=
 			arraySpecifiers[indexOfArraySpecifier].f(variadicArguments);
-			(*sizeOfFormat)++;
 			foundSpecifier = 1;
-			break;
+			return;
 		}
 	}
 	if (foundSpecifier == 0)
-		_putchar('E');
+	{
+		_putchar('%');
+		_putchar(format[*indexOfFormat]);
+		(*sizeOfFormat) += 2;
+	}
 }
