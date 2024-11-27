@@ -58,6 +58,7 @@ void get_specifier(
 
 	Specifier_t arraySpecifiers[] = {
 		{'c', print_c},
+		{'d', print_d},
 		{'\0', NULL}
 	};
 
@@ -71,9 +72,10 @@ void get_specifier(
 		if (arraySpecifiers[indexOfArraySpecifier].specifier ==
 			format[*indexOfFormat])
 		{
+			(*sizeOfFormat) +=
 			arraySpecifiers[indexOfArraySpecifier].f(variadicArguments);
-			foundSpecifier = 1;
 			(*sizeOfFormat)++;
+			foundSpecifier = 1;
 			break;
 		}
 	}
