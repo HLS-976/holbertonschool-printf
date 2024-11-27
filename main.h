@@ -13,11 +13,12 @@
 typedef struct Specifier
 {
 	char specifier;
-	void (*f)(va_list);
+	int (*f)(va_list);
 }Specifier_t;
 
 /*prototype*/
-void print_c(va_list args);
+int print_c(va_list args);
+int print_d(va_list args);
 int _putchar(char c);
 int _printf(const char *format, ...);
 #endif
