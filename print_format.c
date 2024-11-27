@@ -1,41 +1,40 @@
 #include "main.h"
 
 /**
- * print_c - prints element of type char
+ * print_character - prints element of type char
+ *
  * @args: type structure
- * Return: void
+ *
+ * Return: return 1 for the number of printed charcater
  */
 
-int print_c(va_list args)
+int print_character(va_list args)
 {
-	int length = 0;
-	char temporyVariable;
+	_putchar((char)va_arg(args, int));
 
-	temporyVariable = (char)va_arg(args, int);
-	_putchar(temporyVariable);
-
-	return (length++);
+	return (1);
 }
 
 /**
- * print_d - prints element of type integer
- * @args: type structure
- * Return: void
+ * print_integer - prints an integer
+ *
+ * @args: list of arguments
+ *
+ * Return: return the length of printed number
  */
 
-int print_d(va_list args)
+int print_integer(va_list args)
 {
 	int number;
 	int length = 0;
-	char temporaryArray[100];
-	int indexOfArray = 0;
+	int divisor = 1;
 
 	number = va_arg(args, int);
 
 	if (number == 0)
 	{
 		_putchar('0');
-		length++;
+		return (1);
 	}
 
 	if (number < 0)
@@ -45,16 +44,16 @@ int print_d(va_list args)
 		number = -number;
 	}
 
-	while (number >  0)
+	while (number / divisor >= 10)
 	{
-		temporaryArray[indexOfArray++] = (number % 10) + '0';
-		number /= 10;
+		divisor *= 10;
 	}
 
-	while (indexOfArray >= 0)
+	while (divisor > 0)
 	{
-		_putchar(temporaryArray[indexOfArray]);
-		indexOfArray--;
+		_putchar((number / divisor) + '0');
+		number %= divisor;
+		divisor /= 10;
 		length++;
 	}
 
