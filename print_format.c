@@ -1,7 +1,5 @@
 #include "main.h"
 
-int print_unsigned_number(unsigned int n);
-
 /**
  * print_character - Prints charcater corresponding to a specifier c
  *
@@ -21,7 +19,6 @@ int print_character(va_list args)
 
 	return (1);
 }
-
 
 /**
  * print_string - prints several chracter to form a string
