@@ -1,11 +1,11 @@
 #include "main.h"
 
 /* Prototype of get_specifier function */
-void get_specifier(
-	const char *format,
-	int *indexOfFormat,
-	int *lengthFormat,
-	va_list listArguments);
+int get_specifier(
+		const char *format,
+		int *indexFormat,
+		int *lengthFormat,
+		va_list arguments);
 
 /**
  * _printf - Variadic function that prints formated variables at the output
@@ -18,84 +18,102 @@ void get_specifier(
 int _printf(const char *format, ...)
 {
 	/* Declarating variables */
-	int indexOfFormat, lengthFormat;
-	va_list listArguments;
+	int indexFormat, lengthFormat, notFound;
+	va_list arguments;
 
 	if (!format) /* Check whether or not format exist */
 		return (-1);
 
 	/* Initializing variables */
-	va_start(listArguments, format);
-	indexOfFormat = 0;
+	va_start(arguments, format);
+	indexFormat = 0;
 	lengthFormat = 0;
 
-	while (format[indexOfFormat] != '\0')
+	while (format[indexFormat] != '\0')
 	{
-		if (format[indexOfFormat] != '%')
-		{ /* Prints the current character if it's different than % charcater and increment the lengthFormat */
-			_putchar(format[indexOfFormat]);
+		/**
+		 * Prints the current character if it's different
+		 * than % charcaterand increment the lengthFormat
+		 */
+		if (format[indexFormat] != '%')
+		{
+			_putchar(format[indexFormat]);
 			lengthFormat++;
 		}
 		else
-		{ /* Calls the get_specifier function that calls in turn the function corresponding to a specifier */
-			get_specifier(format, &indexOfFormat, &lengthFormat, listArguments);
+		{ /**
+		   * Calls the get_specifier function that
+		   * calls in turn the function corresponding to a specifier
+		   */
+			notFound = get_specifier(format, &indexFormat, &lengthFormat, arguments);
+
+			if (notFound == 0)
+			{ /* Prints specifier as is it */
+				_putchar('%');
+				_putchar(format[indexFormat]);
+				lengthFormat += 2;
+			}
+
 		}
-		indexOfFormat++;
+		indexFormat++;
 	}
-	va_end(listArguments); /* Ends the use of the list of arguments*/
+	va_end(arguments); /* Ends the use of the list of arguments*/
 	_putchar('\n');
 	return (lengthFormat);
 }
 
 /**
- * check_specifier - prints the resultat of specifier and return the size
+ * get_specifier - prints the resultat of specifier and return the size
  *
  * @format: string
- * @indexOfFormat: index of current format
+ * @indexFormat: index of current format
  * @lengthFormat: size of current format
- * @listArguments: variadics arguments
+ * @arguments: variadics arguments
  *
- * Return: void
+ * Return: 0
  */
 
-void get_specifier(
-		const char *format,
-		int *indexOfFormat,
-		int *lengthFormat,
-		va_list listArguments)
+int get_specifier(const char *format, int *indexFormat, int *lengthFormat,
+		va_list arguments)
 {
 	/* Declarating variables */
-	int foundSpecifier, indexOfArraySpecifier;
-	
-	/* Creating an array of stucture type containing specifiers with their associated function */
+	int foundSpecifier, item;
+
+	/**
+	 * Creating an array of stucture type
+	 * containing specifiers with their associated function
+	 */
 	Specifier_t arraySpecifiers[] = {
 		{'c', print_character},
 		{'d', print_integer},
 		{'i', print_integer},
 		{'\0', NULL}
 	};
+	/**
+	 * Increments indexOfFormat to get the next character after % character
+	 */
+	(*indexFormat)++;
+	/**
+	 * Initializing foundSpecifier at 0 to indicate that the specifier isn't found
+	 */
+	foundSpecifier = 0;
 
-	(*indexOfFormat)++; /* Increments indexOfFormat to get the next character after % character */
-	foundSpecifier = 0; /* Initializing foundSpecifier at 0 to indicate that the specifier isn't found yet */
-
-	for (indexOfArraySpecifier = 0;
-		arraySpecifiers[indexOfArraySpecifier].specifier != '\0';
-		indexOfArraySpecifier++)
+	for (item = 0; arraySpecifiers[item].specifier != '\0'; item++)
 	{
-		/* Checks if the mentionned specifier in format is equal to the specifier in arraySpecifier */
-		if (arraySpecifiers[indexOfArraySpecifier].specifier == format[*indexOfFormat])
+		/**
+		 * Checks if the mentionned specifier in format
+		 * is equal to the specifier in arraySpecifier
+		 */
+		if (arraySpecifiers[item].specifier == format[*indexFormat])
 		{
-			/* Calls the function corresponding to the specifier and gets the return of it in lengthFormat */
-			(*lengthFormat) +=
-			arraySpecifiers[indexOfArraySpecifier].f(listArguments);
+			/**
+			 * Calls the function corresponding to the specifier
+			 * and gets the return of it in lengthFormat
+			 */
+			(*lengthFormat) += arraySpecifiers[item].f(arguments);
 			foundSpecifier = 1;
-			return;
+			return (foundSpecifier);
 		}
 	}
-	if (foundSpecifier == 0)
-	{ /* Displays the specifier as is if it doesn't conform to the expected specifiers */
-		_putchar('%');
-		_putchar(format[*indexOfFormat]);
-		(*lengthFormat) += 2;
-	}
+	return (foundSpecifier);
 }
