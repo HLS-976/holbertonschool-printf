@@ -58,7 +58,6 @@ int _printf(const char *format, ...)
 		indexFormat++;
 	}
 	va_end(arguments); /* Ends the use of the list of arguments*/
-	_putchar('\n');
 	return (lengthFormat);
 }
 
