@@ -42,13 +42,22 @@ int _printf(const char *format, ...)
 			if (format[indexFormat + 1] == '\0')
 				return (-1);
 
-			notFound = get_specifier(format, &indexFormat, &lengthFormat, arguments);
-
-			if (!notFound) /* If no valid specifier, print % and next character */
+			if (format[indexFormat + 1] == '%')
 			{
 				_putchar('%');
-				_putchar(format[indexFormat]);
-				lengthFormat += 2;
+				lengthFormat++;
+				indexFormat++;
+			}
+			else
+			{
+				notFound = get_specifier(format, &indexFormat, &lengthFormat, arguments);
+
+				if (!notFound) /* If no valid specifier, print % and next character */
+				{
+					_putchar('%');
+					_putchar(format[indexFormat]);
+					lengthFormat += 2;
+				}
 			}
 
 		}
