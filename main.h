@@ -1,9 +1,11 @@
 #ifndef MAIN_H
 #define MAIN_H
 
+/* Including necessary libraries */
 #include <stddef.h>
 #include <stdarg.h>
 #include <stdlib.h>
+#include <unistd.h>
 
 /**
  * struct Specifier - structure of specifer
