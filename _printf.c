@@ -18,16 +18,13 @@ int get_specifier(
 int _printf(const char *format, ...)
 {
 	/* Declarating variables */
-	int indexFormat, lengthFormat, notFound;
+	int indexFormat = 0, lengthFormat = 0, notFound;
 	va_list arguments;
 
-	if (!format) /* Check whether or not format exist */
+	if (!format) /* Check whether format exist */
 		return (-1);
 
-	/* Initializing variables */
 	va_start(arguments, format);
-	indexFormat = 0;
-	lengthFormat = 0;
 
 	while (format[indexFormat] != '\0')
 	{
@@ -41,14 +38,14 @@ int _printf(const char *format, ...)
 			lengthFormat++;
 		}
 		else
-		{ /**
-		   * Calls the get_specifier function that
-		   * calls in turn the function corresponding to a specifier
-		   */
+		{
+			if (format[indexFormat + 1] == '\0')
+				return (-1);
+
 			notFound = get_specifier(format, &indexFormat, &lengthFormat, arguments);
 
-			if (notFound == 0)
-			{ /* Prints specifier as is it */
+			if (!notFound) /* If no valid specifier, print % and next character */
+			{
 				_putchar('%');
 				_putchar(format[indexFormat]);
 				lengthFormat += 2;
@@ -76,7 +73,7 @@ int get_specifier(const char *format, int *indexFormat, int *lengthFormat,
 		va_list arguments)
 {
 	/* Declarating variables */
-	int foundSpecifier, item;
+	int foundSpecifier = 0, item;
 
 	/**
 	 * Creating an array of stucture type
@@ -93,10 +90,6 @@ int get_specifier(const char *format, int *indexFormat, int *lengthFormat,
 	 * Increments indexOfFormat to get the next character after % character
 	 */
 	(*indexFormat)++;
-	/**
-	 * Initializing foundSpecifier at 0 to indicate that the specifier isn't found
-	 */
-	foundSpecifier = 0;
 
 	for (item = 0; arraySpecifiers[item].specifier != '\0'; item++)
 	{

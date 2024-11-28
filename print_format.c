@@ -1,5 +1,7 @@
 #include "main.h"
 
+int print_unsigned_number(unsigned int n);
+
 /**
  * print_character - Prints charcater corresponding to a specifier c
  *
@@ -10,7 +12,12 @@
 
 int print_character(va_list args)
 {
-	_putchar((char)va_arg(args, int));
+	char character = (char)va_arg(args, int);
+
+	if (character == '\0')
+		return (0);
+
+	_putchar(character);
 
 	return (1);
 }
@@ -27,9 +34,12 @@ int print_character(va_list args)
 int print_string(va_list args)
 {
 	char *string = va_arg(args, char *);
-	/* Initialisation of a listing structure */
-
 	int length = 0;
+
+	if (string == NULL) /* Handle null strings */
+	{
+		string = "(null)";
+	}
 
 	while (*string)
 	{
