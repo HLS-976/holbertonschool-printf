@@ -1,5 +1,7 @@
 #include "main.h"
 
+int print_unsigned_number(unsigned int n);
+
 /**
  * print_character - Prints charcater corresponding to a specifier c
  *
@@ -10,9 +12,47 @@
 
 int print_character(va_list args)
 {
-	_putchar((char)va_arg(args, int));
+	char character = (char)va_arg(args, int);
+
+	if (character == '\0')
+		return (0);
+
+	_putchar(character);
 
 	return (1);
+}
+
+
+/**
+ * print_string - prints several chracter to form a string
+ *
+ * @args: list of arguments
+ *
+ * Return: the length of printed charecter
+ */
+
+int print_string(va_list args)
+{
+	char *string = va_arg(args, char *);
+	int length = 0;
+
+	if (string == NULL) /* Handle null strings */
+	{
+		string = "(null)";
+	}
+
+	while (*string)
+	{
+		/*
+		 * Prints the pointer of our string, as long as it exists
+		 * And increment the string and it's length
+		 */
+		_putchar(*string);
+		length++;
+		string++;
+	}
+
+	return (length);
 }
 
 /**
