@@ -10,10 +10,10 @@
 
 int print_character(va_list args)
 {
-	char character = (char)va_arg(args, int);
+	char character = va_arg(args, int);
 
 	if (character == '\0')
-		return (0);
+		return;
 
 	_putchar(character);
 
@@ -44,7 +44,6 @@ int print_string(va_list args)
 		length++;
 	}
 
-	
 	return (length);
 }
 
