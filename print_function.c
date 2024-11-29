@@ -33,22 +33,25 @@ int print_string(va_list args)
 	char *string = va_arg(args, char *);
 	int length = 0;
 
-	if (string == NULL)
+	if (!string)
 	{
-		string = "(null)";
+		_putchar('(');
+		_putchar('n');
+		_putchar('u');
+		_putchar('l');
+		_putchar('l');
+		_putchar(')');
+
+		return (6);
 	}
 
-	while (*string)
+	while (string[length])
 	{
-		/*
-		 * Prints the pointer of our string, as long as it exists
-		 * And increments the string and it's length
-		 */
-		_putchar(*string);
+		_putchar(string[length]);
 		length++;
-		string++;
 	}
 
+	
 	return (length);
 }
 
