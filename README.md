@@ -1,49 +1,72 @@
-# _printf
+
+# _Printf
+
+
+
+
+
 
 ## Description
 
-The role of the 'printf' function is to do formated printing, and the goal of this project is to make a custom 'printf' function in c which supports different format specifiers: single characters, strings of characters, decimal numbers and integers in base 10.
+The role of the "_printf" is to do formated printing, and the goal of this project is to make a custom printf function in see which supports different format specifier : single characters, strings, decimal number and integers in base 10.
 
 ## Compilation
 
-The command needed to compile the files is:
+The command needed to compile the files is :
 
 ```sh
-gcc -Wall -Werror -Wextra -pedantic -std=gnu89 -Wno-format *.c
+gcc -Wall -Werror -Wextra -pedantic -std=gnu89 -Wno-format _printf.c print_function.c 
 ```
 
-Please do not forget to include the files needed so the compiling process can be as simple as possible.
-
+Please make sure you include the necessary files for the compilation.
 ## Requirements
 
 - All of our files are made to be compiled on Ubuntu 20.04 LTS
 - Compiling has to be done through gcc
 - The amount of functions per file does not exceed 5
-- Our code uses the 'Betty' style
+- Our code uses the 'Betty style'
+## Usage/Examples
 
-## Example
-
-If you wish to try our function you can, for example, use this example:
-
-```sh
-#include <limits.h>
-#include <stdio.h>
+Here's an example of how to use our function :
+```c
 #include "main.h"
 
+/**
+ * main - entry point of the program
+ *
+ * Return: always 0 (Success)
+ */
 int main(void)
 {
-    int len;
-    int len2;
+    int length = 0;
 
-    len = _printf("Let's try to printf a simple sentence.\n");
-    len2 = printf("Let's try to printf a simple sentence.\n");
-    return(0);
+    length = _printf("%c\n", 'G');
+    _printf("%d\n", length);
+
+    length = _printf("Hello %s\n", "World");
+    _printf("%d\n", length);
+
+    length = _printf("%i\n", 25);
+    _printf("%d\n", length);
+
+    return (0);
 }
 ```
-Which would output: "Let's try to printf a simple sentence."
+And the output should look like this :
+```
+[Output] : G
+[Output] : 2
+[Output] : Hello World
+[Output] : 12
+[Output] : 25
+[Output] : 3
+```
+## Man page
 
-And would return "38" since that is the number of characters in this character string
-
-
+Execution : man ./man_3_printf
+```
+![Mon image](https://imgur.com/7s6Ezbb.png)
+```
 ## Authors
-Hillias Soumahill and Gabriel Cohen from C#25
+
+[Hilliass Soumahill](https://github.com/HLS-976), [Gabriel Cohen](https://github.com/GabrielCoh).
