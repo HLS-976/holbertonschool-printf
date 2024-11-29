@@ -13,7 +13,7 @@ int print_character(va_list args)
 	char character = va_arg(args, int);
 
 	if (character == '\0')
-		return;
+		return (0);
 
 	_putchar(character);
 
