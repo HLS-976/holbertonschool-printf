@@ -1,0 +1,93 @@
+
+.TH PRINTF 3 "November 2024" "Holberton School Project" "User Commands"
+
+.SH NAME
+_printf \- produces formatted output
+
+.SH SYNOPSIS
+.B #include "main.h"
+.B int _printf(const char *format, ...);
+
+.SH DESCRIPTION
+The _printf() function prints formatted output corresponding to a format string and additional arguments.
+
+The format string may contain normal characters, which are printed as-is, and format specifiers introduced by the '%' character. The following format specifiers are supported:
+
+.TP
+.B %c
+Prints a single character.
+
+.TP
+.B %s
+Prints a null-terminated string.
+
+.TP
+.B %d or %i
+Prints a signed decimal integer.
+
+Any unsupported specifier will print the '%' character followed by the unsupported specifier.
+
+The _printf() function does not handle advanced formatting options like field width, precision, or length modifiers.
+
+.SH RETURN VALUE
+The _printf() function returns the total number of characters printed. If an error occurs (e.g., if the format string is NULL), it returns \-1.
+
+.SH EXAMPLES
+.B Example 1: Printing a simple sentence
+.nf
+#include "main.h"
+
+int main() {
+    int len = _printf("Let's try to printf a simple sentence.\n");
+    printf("Length: [%d]\n", len);
+    return (0);
+}
+.fi
+
+Output:
+.nf
+Let's try to printf a simple sentence.
+Length: [39]
+.fi
+
+.B Example 2: Handling integers and strings
+.nf
+#include "main.h"
+
+int main() {
+    int len = _printf("Length: [%d]\n", 42);
+    _printf("Negative: [%d]\n", -762534);
+    _printf("String: [%s]\n", "I am a string!");
+    return (0);
+}
+.fi
+
+Output:
+.nf
+Length: [42]
+Negative: [-762534]
+String: [I am a string!]
+.fi
+
+.B Example 3: Printing a percent sign
+.nf
+#include "main.h"
+
+int main() {
+    int len = _printf("Percent: [%%]\n");
+    printf("Printed length: [%d]\n", len);
+    return (0);
+}
+.fi
+
+Output:
+.nf
+Percent: [%]
+Printed length: [10]
+.fi
+
+.SH SEE ALSO
+printf(3)
+
+.SH AUTHORS
+Hilliass Soumahill, Gabriel Cohen.
