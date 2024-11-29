@@ -63,7 +63,7 @@ int print_string(va_list args)
 int print_integer(va_list args)
 {
 	/*Declaring variables */
-	int number;
+	long int number;
 	int length;
 	int divisor;
 
