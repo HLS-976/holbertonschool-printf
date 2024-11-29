@@ -21,11 +21,11 @@ int print_character(va_list args)
 }
 
 /**
- * print_string - prints several chracter to form a string
+ * print_string - prints several characters to form a string
  *
  * @args: list of arguments
  *
- * Return: the length of printed charecter
+ * Return: the length of the printed characters
  */
 
 int print_string(va_list args)
@@ -33,7 +33,7 @@ int print_string(va_list args)
 	char *string = va_arg(args, char *);
 	int length = 0;
 
-	if (string == NULL) /* Handle null strings */
+	if (string == NULL)
 	{
 		string = "(null)";
 	}
@@ -42,7 +42,7 @@ int print_string(va_list args)
 	{
 		/*
 		 * Prints the pointer of our string, as long as it exists
-		 * And increment the string and it's length
+		 * And increments the string and it's length
 		 */
 		_putchar(*string);
 		length++;
@@ -62,7 +62,7 @@ int print_string(va_list args)
 
 int print_integer(va_list args)
 {
-	/*Declarating variables */
+	/*Declaring variables */
 	int number;
 	int length;
 	int divisor;
