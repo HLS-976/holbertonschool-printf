@@ -64,9 +64,9 @@ And the output should look like this :
 ## Man page
 
 Execution : man ./man_3_printf
-```
+
 ![Mon image](https://imgur.com/7s6Ezbb.png)
-```
+
 ## Authors
 
 [Hilliass Soumahill](https://github.com/HLS-976), [Gabriel Cohen](https://github.com/GabrielCoh).
