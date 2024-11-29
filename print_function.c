@@ -35,17 +35,10 @@ int print_string(va_list args)
 
 	if (!string)
 	{
-		_putchar('(');
-		_putchar('n');
-		_putchar('u');
-		_putchar('l');
-		_putchar('l');
-		_putchar(')');
-
-		return (6);
+		string = "(null)";
 	}
 
-	while (string[length])
+	while (string[length] != '\0')
 	{
 		_putchar(string[length]);
 		length++;
