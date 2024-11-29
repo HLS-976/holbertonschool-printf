@@ -30,7 +30,7 @@ int _printf(const char *format, ...)
 	{
 		/**
 		 * Prints the current character if it's different
-		 * than % charcaterand increment the lengthFormat
+		 * than % character and increment the lengthFormat
 		 */
 		if (format[indexFormat] != '%')
 		{
@@ -68,7 +68,7 @@ int _printf(const char *format, ...)
 }
 
 /**
- * get_specifier - prints the resultat of specifier and return the size
+ * get_specifier - prints the resultat of specifier and returns the size
  *
  * @format: string
  * @indexFormat: index of current format
@@ -96,7 +96,7 @@ int get_specifier(const char *format, int *indexFormat, int *lengthFormat,
 		{'\0', NULL}
 	};
 	/**
-	 * Increments indexOfFormat to get the next character after % character
+	 * Increments indexFormat to get the next character after % character
 	 */
 	(*indexFormat)++;
 
@@ -104,7 +104,7 @@ int get_specifier(const char *format, int *indexFormat, int *lengthFormat,
 	{
 		/**
 		 * Checks if the mentionned specifier in format
-		 * is equal to the specifier in arraySpecifier
+		 * is equal to the specifier in arraySpecifiers
 		 */
 		if (arraySpecifiers[item].specifier == format[*indexFormat])
 		{
