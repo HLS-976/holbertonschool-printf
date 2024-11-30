@@ -8,7 +8,7 @@
 
 ## Description
 
-The role of the "_printf" is to do formated printing, and the goal of this project is to make a custom printf function in see which supports different format specifier : <span style="color : violet;>single characters "%c"</span>, strings "%s", decimal number and integers "%d or %i" in base 10.
+The role of the "_printf" is to do formated printing, and the goal of this project is to make a custom printf function in see which supports different format specifier : single characters "%c", strings "%s", decimal number and integers "%d or %i" in base 10.
 
 ## Compilation
 
