@@ -69,7 +69,7 @@ Execution : man ./man_3_printf
 
 ## Flowchart
 
-![Mon image 2](https://imgur.com/ooxX38U)
+![Mon image 2](https://imgur.com/ooxX38U.png)
 
 ## Authors
 
