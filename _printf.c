@@ -21,7 +21,10 @@ int _printf(const char *format, ...)
 	int indexFormat = 0, lengthFormat = 0, notFound;
 	va_list arguments;
 
-	if (!format) /* Check whether format exist */
+	if (!format || (format[0] == '%' && format[1] == '\0'))
+		return (-1);
+
+	if (format[0] == '%' && format[1] == ' ' && !format[2])
 		return (-1);
 
 	va_start(arguments, format);
