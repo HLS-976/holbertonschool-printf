@@ -8,7 +8,7 @@
 
 ## Description
 
-The role of the "_printf" is to do formated printing, and the goal of this project is to make a custom printf function in see which supports different format specifier : single characters, strings, decimal number and integers in base 10.
+The role of the "_printf" is to do formated printing, and the goal of this project is to make a custom printf function in see which supports different format specifier : single characters "%c", strings "%s", decimal number and integers "%d or %i" in base 10.
 
 ## Compilation
 
@@ -27,7 +27,8 @@ Please make sure you include the necessary files for the compilation.
 - Our code uses the 'Betty style'
 ## Usage/Examples
 
-Here's an example of how to use our function :
+Here's an example of how to use our function on main.c file:
+
 ```c
 #include "main.h"
 
@@ -36,30 +37,37 @@ Here's an example of how to use our function :
  *
  * Return: always 0 (Success)
  */
+#include "main.h"
+
 int main(void)
 {
-    int length = 0;
+        int len, a, b;
 
-    length = _printf("%c\n", 'G');
-    _printf("%d\n", length);
+        a = 3;
+        b = 5;
 
-    length = _printf("Hello %s\n", "World");
-    _printf("%d\n", length);
+        len = _printf("The principle of evolution is much faster in computers than in bipeds :)\n");
+        _printf("Length:[%d]\n", len);
+        _printf("Welcome to the %s School !!\n", "Holberton");
+        _printf("Negative:[%d]\n", -7625344);
+        _printf("%d x %d = %d\n", a, b, (a * b));
+        _printf("Character:[%c]\n", 'H');
+        _printf("Percent:[%%]\n");
+        _printf("Unknown:[%r]\n");
 
-    length = _printf("%i\n", 25);
-    _printf("%d\n", length);
-
-    return (0);
+        return (0);
 }
 ```
 And the output should look like this :
 ```
-[Output] : G
-[Output] : 2
-[Output] : Hello World
-[Output] : 12
-[Output] : 25
-[Output] : 3
+The principle of evolution is much faster in computers than in bipeds :)
+Length:[73]
+Welcome to the Holberton School !!
+Negative:[-7625344]
+3 x 5 = 15
+Character:[H]
+Percent:[%]
+Unknown:[%r]
 ```
 ## Man page
 
